@@ -3,8 +3,6 @@ package com.stackroute.domain;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 @Entity
 public class Track
@@ -60,9 +58,9 @@ public class Track
         this.firstName = firstName;
     }
 
-    public String getLastName()
+    public String getLastName(String lastName)
     {
-        return lastName;
+        return this.lastName;
     }
 
     public void setLastName(String lastName)
@@ -77,6 +75,7 @@ public class Track
     public void setAge(int age) {
         this.age = age;
     }
+
 }
 
 
