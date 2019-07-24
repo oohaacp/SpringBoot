@@ -1,5 +1,7 @@
 package com.stackroute.domain;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,12 +9,15 @@ import javax.persistence.Id;
 @Entity
 public class Track
 {
-       @Id
-        @GeneratedValue(strategy = GenerationType.AUTO)
-         int id;
-         String firstName;
-         String lastName;
-         int age;
+    // Declaration of fields in table
+    @Id
+    int id;
+    @ApiModelProperty(notes = "Generated Track-firstName")
+    String firstName;
+    @ApiModelProperty(notes = "Generated Track-lastName")
+    String lastName;
+    @ApiModelProperty(notes = "Generated Track-age")
+    int age;
 
     public Track()
     {

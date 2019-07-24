@@ -2,6 +2,8 @@ package com.stackroute.controller;
 
 import com.stackroute.domain.Track;
 import com.stackroute.service.TrackService;
+import io.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -63,7 +65,7 @@ return new ResponseEntity<List<Track>>(trackService.getAllUsers(), HttpStatus.OK
 
     // Implementing DELETE method
     @DeleteMapping(value="/track/{id}")
-    public ResponseEntity<?> deleteTrack(@PathVariable("id") int id) {
+    public ResponseEntity<?> deleteTrack(@ApiParam(value = "Data is retrieved based on track-id", required = true)@PathVariable("id") int id) {
         ResponseEntity responseEntity;
         try {
             trackService.deleteTrack(id);
@@ -74,12 +76,12 @@ return new ResponseEntity<List<Track>>(trackService.getAllUsers(), HttpStatus.OK
         return responseEntity;
     }
     // Retrieving Data by name field
+
     @GetMapping("track/{firstName}")
-    public ResponseEntity<?> trackByname(@PathVariable String firstName)
+    public ResponseEntity<?> trackByName(@ApiParam(value = "Data is retrieved based on firstName", required = true)@PathVariable("firstName") String firstName)
     {
         return new ResponseEntity<>(trackService.trackByName(firstName),HttpStatus.OK);
     }
-
 
 
 }
