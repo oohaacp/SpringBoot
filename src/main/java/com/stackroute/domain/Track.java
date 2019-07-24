@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 @Entity
-public class User
+public class Track
 {
        @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,11 +14,11 @@ public class User
          String lastName;
          int age;
 
-    public User()
+    public Track()
     {
     }
 
-    public User(int id, String firstName, String lastName, int age) {
+    public Track(int id, String firstName, String lastName, int age) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
