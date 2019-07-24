@@ -1,9 +1,8 @@
 package com.stackroute.controller;
 
-import com.stackroute.domain.User;
-import com.stackroute.service.UserService;
+import com.stackroute.domain.Track;
+import com.stackroute.service.TrackService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,22 +12,22 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "api/v1")
-public class UserController
+public class TrackController
 {
-    UserService userService;
+    TrackService trackService;
     @Autowired
-    public UserController(UserService userService)
+    public TrackController(TrackService userService)
     {
-        this.userService=userService;
+        this.trackService=userService;
 
     }
-    @PostMapping("user")
-    public ResponseEntity<?> saveUser(@RequestBody  User user)
+    @PostMapping("track")
+    public ResponseEntity<?> saveUser(@RequestBody Track user)
     {
       ResponseEntity responseEntity;
       try
       {
-          userService.saveUser(user);
+          trackService.saveUser(user);
           responseEntity=new ResponseEntity<String>("successfully completed", HttpStatus.CREATED);
 
       }catch (Exception ex)
@@ -39,10 +38,10 @@ public class UserController
       return responseEntity;
     }
 
-    @GetMapping("user")
+    @GetMapping("track")
     public ResponseEntity<?>getAllUsers()
     {
-return new ResponseEntity<List<User>>(userService.getAllUsers(), HttpStatus.OK);
+return new ResponseEntity<List<Track>>(trackService.getAllUsers(), HttpStatus.OK);
     }
 }
 

@@ -9,12 +9,12 @@ import org.springframework.context.annotation.Configuration;
 @EnableAutoConfiguration
 @ComponentScan
 //@SpringBootApplication
-public class UserServiceApplication
+public class MuzixApplication
 {
 
 	public static void main(String[] args)
 	{
-		SpringApplication.run(UserServiceApplication.class, args);
+		SpringApplication.run(MuzixApplication.class, args);
 
 	}
 
