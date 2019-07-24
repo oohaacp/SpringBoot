@@ -7,19 +7,17 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
-public class TrackServiceImpl implements TrackService
-{
-     TrackRepository trackRepository;
-     @Autowired
-     public TrackServiceImpl(TrackRepository userRepository)
-     {
-         this.trackRepository=userRepository;
-     }
+public class TrackServiceImpl implements TrackService {
+    TrackRepository trackRepository;
+
+    @Autowired
+    public TrackServiceImpl(TrackRepository userRepository) {
+        this.trackRepository = userRepository;
+    }
 
     @Override
-    public Track saveUser(Track user)
-    {
-        Track savedUser=trackRepository.save(user);
+    public Track saveUser(Track user) {
+        Track savedUser = trackRepository.save(user);
         return savedUser;
     }
 
@@ -27,4 +25,22 @@ public class TrackServiceImpl implements TrackService
     public List<Track> getAllUsers() {
         return trackRepository.findAll();
     }
+
+    @Override
+    public void updateTrack(Track track) {
+        trackRepository.save(track);
+    }
+
+
+    @Override
+    public void deleteTrack(int id) {
+        trackRepository.deleteById(id);
+    }
+    @Override
+    public Track trackByName(String firstName) {
+        return trackRepository.trackByName(firstName);
+    }
 }
+
+
+

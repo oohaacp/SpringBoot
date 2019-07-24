@@ -43,5 +43,43 @@ public class TrackController
     {
 return new ResponseEntity<List<Track>>(trackService.getAllUsers(), HttpStatus.OK);
     }
-}
 
+
+    // Implementing PUT method
+    @PutMapping("track")
+    public ResponseEntity<?> updateTrack(@RequestBody Track track)
+    {
+        ResponseEntity responseEntity;
+        try{
+            trackService.updateTrack(track);
+            responseEntity=new ResponseEntity("Successfully updated", HttpStatus.CREATED);
+        }
+        catch (Exception e)
+        {
+            responseEntity=new ResponseEntity<String>(e.getMessage(),HttpStatus.CONFLICT);
+        }
+        return responseEntity;
+    }
+
+    // Implementing DELETE method
+    @DeleteMapping(value="/track/{id}")
+    public ResponseEntity<?> deleteTrack(@PathVariable("id") int id) {
+        ResponseEntity responseEntity;
+        try {
+            trackService.deleteTrack(id);
+            responseEntity = new ResponseEntity("Successfully deleted", HttpStatus.CREATED);
+        } catch (Exception e) {
+            responseEntity = new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
+        }
+        return responseEntity;
+    }
+    // Retrieving Data by name field
+    @GetMapping("track/{firstName}")
+    public ResponseEntity<?> trackByname(@PathVariable String firstName)
+    {
+        return new ResponseEntity<>(trackService.trackByName(firstName),HttpStatus.OK);
+    }
+
+
+
+}
