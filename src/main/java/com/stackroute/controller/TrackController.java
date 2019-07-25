@@ -40,7 +40,7 @@ public class TrackController
       return responseEntity;
     }
 
-    @GetMapping("track")
+    @GetMapping("trackget")
     public ResponseEntity<?>getAllUsers()
     {
 return new ResponseEntity<List<Track>>(trackService.getAllUsers(), HttpStatus.OK);
