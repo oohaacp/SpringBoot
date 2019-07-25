@@ -36,7 +36,6 @@ public class TrackServiceImpl implements TrackService {
 
     }
 
-
     @Override
     public List<Track> getAllUsers() {
         return trackRepository.findAll();

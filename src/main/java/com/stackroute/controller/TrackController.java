@@ -1,6 +1,7 @@
 package com.stackroute.controller;
 
 import com.stackroute.domain.Track;
+import com.stackroute.exceptions.GlobalExceptions;
 import com.stackroute.service.TrackService;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiParam;
@@ -16,6 +17,7 @@ import java.util.List;
 @RequestMapping(value = "api/v1")
 public class TrackController
 {
+    GlobalExceptions globalException=new GlobalExceptions();
     TrackService trackService;
     @Autowired
     public TrackController(TrackService userService)
@@ -40,7 +42,7 @@ public class TrackController
       return responseEntity;
     }
 
-    @GetMapping("trackget")
+    @GetMapping("track")
     public ResponseEntity<?>getAllUsers()
     {
 return new ResponseEntity<List<Track>>(trackService.getAllUsers(), HttpStatus.OK);
