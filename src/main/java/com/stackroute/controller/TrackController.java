@@ -14,13 +14,17 @@ import java.util.List;
 @RequestMapping(value = "api/v1")
 public class TrackController
 {
+    //Declarations
     TrackService trackService;
     @Autowired
+    // Performing CRUD operations....
     public TrackController(TrackService userService)
     {
         this.trackService=userService;
 
     }
+    
+// Implementing POST method
     @PostMapping("track")
     public ResponseEntity<?> saveUser(@RequestBody Track user)
     {
@@ -37,6 +41,8 @@ public class TrackController
 
       return responseEntity;
     }
+    
+// Implementing Get method
 
     @GetMapping("track")
     public ResponseEntity<?>getAllUsers()
