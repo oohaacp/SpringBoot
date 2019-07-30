@@ -7,6 +7,8 @@ import javax.persistence.Id;
 @Entity
 public class Track
 {
+       
+    // Declaration of fields in table
        @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
          int id;
@@ -34,6 +36,7 @@ public class Track
                 ", age=" + age +
                 '}';
     }
+       // Setters and Getters
 
     public int getId()
     {
