@@ -21,6 +21,9 @@ public class TrackServiceImpl implements TrackService
     {
         Track savedUser=trackRepository.save(user);
         return savedUser;
+    }catch(Exception e){
+        e.printStackTrace();
+        }
     }
 
     @Override
