@@ -9,6 +9,8 @@ public interface TrackService
      // Methods to implement CRUD.
     public Track saveUser(Track track);
     public List<Track>getAllUsers();
+    public void deleteTrack(int id);
+    public void updateTrack(Track track)
 
 
     }
