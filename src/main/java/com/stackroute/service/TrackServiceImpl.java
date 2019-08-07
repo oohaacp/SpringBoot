@@ -15,6 +15,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
+import java.util.optional;
 
 import static org.springframework.http.HttpHeaders.USER_AGENT;
 
@@ -97,10 +98,15 @@ public class TrackServiceImpl implements TrackService
         }
     }
 
+   
     @Override
-    public void deleteTrack(int id)
-    {
-        trackRepository.deleteById(id);
+    public Track deleteTrack(int id) {
+        Optional<Track> track =null;
+        if(trackRepository.existsById(id) == true) {
+            trackRepository.deleteById(id);
+            track= trackRepository.findById(id);
+        }
+        return track.get();
     }
 
     @Override
