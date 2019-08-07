@@ -16,7 +16,8 @@ import java.util.List;
 @RequestMapping(value = "api/v1")
 public class TrackController
 {
-    TrackService trackService;
+    private TrackService trackService;
+     ResponseEntity responseEntity;
     @Autowired
     public TrackController(TrackService userService)
     {
@@ -26,7 +27,7 @@ public class TrackController
     @PostMapping("track")
     public ResponseEntity<?> saveUser(@RequestBody Track user)
     {
-      ResponseEntity responseEntity;
+     
       try
       {
           trackService.saveUser(user);
@@ -51,7 +52,7 @@ return new ResponseEntity<List<Track>>(trackService.getAllUsers(), HttpStatus.OK
     @PutMapping("track")
     public ResponseEntity<?> updateTrack(@RequestBody Track track)
     {
-        ResponseEntity responseEntity;
+       
         try{
             trackService.updateTrack(track);
             responseEntity=new ResponseEntity("Successfully updated", HttpStatus.CREATED);
@@ -66,7 +67,7 @@ return new ResponseEntity<List<Track>>(trackService.getAllUsers(), HttpStatus.OK
     // Implementing DELETE method
     @DeleteMapping(value="/track/{id}")
     public ResponseEntity<?> deleteTrack(@ApiParam(value = "Data is retrieved based on track-id", required = true)@PathVariable("id") int id) {
-        ResponseEntity responseEntity;
+        
         try {
             trackService.deleteTrack(id);
             responseEntity = new ResponseEntity("Successfully deleted", HttpStatus.CREATED);
