@@ -74,7 +74,7 @@ public class TrackServiceImpl implements TrackService
 
         if(savetrack==null)
         {
-            throw new Exception("Track already present");
+            throw new Exception("Track does not exist");
         }
         return savetrack;
     }
