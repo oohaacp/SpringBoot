@@ -9,6 +9,8 @@ import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.optional;
+
 @Service
 public class TrackServiceImpl implements TrackService {
     TrackRepository trackRepository;
@@ -63,9 +65,15 @@ public class TrackServiceImpl implements TrackService {
 
 
     @Override
-    public void deleteTrack(int id) {
-        trackRepository.deleteById(id);
+    public Track deleteTrack(int id) {
+        Optional<Track> track =null;
+        if(trackRepository.existsById(id) == true) {
+            trackRepository.deleteById(id);
+            track= trackRepository.findById(id);
+        }
+        return track.get();
     }
+    
     @Override
     public Track trackByName(String firstName)  {
         return trackRepository.trackByName(firstName);
