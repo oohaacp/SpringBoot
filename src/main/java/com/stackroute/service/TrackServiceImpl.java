@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class TrackServiceImpl implements TrackService {
 
-    TrackRepository trackRepository;
+    private TrackRepository trackRepository;
 
     // Providing implementation for all methods of track
     @Autowired
@@ -29,7 +29,7 @@ public class TrackServiceImpl implements TrackService {
         Track savetrack = trackRepository.save(track);
 
         if (savetrack == null) {
-            throw new TrackAlreadyExistException("Track already present");
+            throw new TrackAlreadyExistException("Track does not exist");
         }
         return savetrack;
     }
@@ -43,15 +43,6 @@ public class TrackServiceImpl implements TrackService {
     @Override
     public Track updateTrack(Track track) throws TrackNotFoundException
     {
-        /*if (trackRepository.existsById(track.getId())) {
-            Track trackobj = trackRepository.findById(track.getId()).get();
-            trackobj.setComment(track.getComment());
-            trackRepository.save(trackobj);
-            return trackobj;
-        } else {
-            throw new TrackNotFoundException("Track not found");
-        }*/
-
         Track track1=new Track();
         if (trackRepository.existsById(track.getId())) {
             track1.setName(track.getName());
