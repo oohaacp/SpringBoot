@@ -7,8 +7,8 @@ import java.util.List;
 public interface TrackService {
     public Track saveUser(Track track);
     public List<Track>getAllUsers();
-    public void deleteTrack(int id);
-    public void updateTrack(Track track);
+    public Track deleteTrack(int id);
+    public Track updateTrack(Track track);
     public Track trackByName(String firstName);
 }
 
