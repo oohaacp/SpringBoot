@@ -29,7 +29,7 @@ public class TrackServiceImpl implements TrackService {
 
         if(saveUser==null)
         {
-            throw new TrackAlreadyExistsException("Track already preseent");
+            throw new TrackAlreadyExistsException("Track does not exist");
         }
         return saveUser;
 
