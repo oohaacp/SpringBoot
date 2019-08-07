@@ -16,6 +16,7 @@ public class TrackController
 {
     //Declarations
     TrackService trackService;
+    ResponseEntity responseEntity;
     @Autowired
     // Performing CRUD operations....
     public TrackController(TrackService userService)
@@ -28,7 +29,7 @@ public class TrackController
     @PostMapping("track")
     public ResponseEntity<?> saveUser(@RequestBody Track user)
     {
-      ResponseEntity responseEntity;
+      
       try
       {
           trackService.saveUser(user);
