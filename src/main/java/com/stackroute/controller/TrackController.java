@@ -15,6 +15,7 @@ import java.util.List;
 public class TrackController
 {
     TrackService trackService;
+     ResponseEntity responseEntity;
     @Autowired
     public TrackController(TrackService userService)
     {
@@ -24,7 +25,7 @@ public class TrackController
     @PostMapping("track")
     public ResponseEntity<?> saveUser(@RequestBody Track user)
     {
-      ResponseEntity responseEntity;
+      
       try
       {
           trackService.saveUser(user);
