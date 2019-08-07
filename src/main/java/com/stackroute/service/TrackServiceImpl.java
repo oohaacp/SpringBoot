@@ -26,15 +26,27 @@ public class TrackServiceImpl implements TrackService {
         return trackRepository.findAll();
     }
 
+   
     @Override
-    public void updateTrack(Track track) {
-        trackRepository.save(track);
+    public Track updateTrack(int id) {
+        Optional<Track> track =null;
+        if(trackRepository.existsById(id) == true) {
+            trackRepository.updateById(id);
+            track= trackRepository.findById(id);
+        }
+        return track.get();
     }
 
 
+    
     @Override
-    public void deleteTrack(int id) {
-        trackRepository.deleteById(id);
+    public Track deleteTrack(int id) {
+        Optional<Track> track =null;
+        if(trackRepository.existsById(id) == true) {
+            trackRepository.deleteById(id);
+            track= trackRepository.findById(id);
+        }
+        return track.get();
     }
     @Override
     public Track trackByName(String firstName) {
