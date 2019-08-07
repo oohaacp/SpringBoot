@@ -17,6 +17,7 @@ public class TrackController
 
 @Autowired
 private TrackRepository trackRepository;
+     ResponseEntity responseEntity;
 
     // Declaration
    TrackService trackService;
@@ -32,7 +33,7 @@ public TrackController(TrackService trackService)
 @PostMapping("track")
 public ResponseEntity<?> saveTrack(@RequestBody Track track)
 {
-    ResponseEntity responseEntity;
+   
     try{
         trackService.saveTrack(track);
         responseEntity=new ResponseEntity("Successfully created", HttpStatus.CREATED);
@@ -56,7 +57,7 @@ public ResponseEntity<?> saveTrack(@RequestBody Track track)
 @PutMapping("track")
 public ResponseEntity<?> updateTrack(@RequestBody Track track)
 {
-    ResponseEntity responseEntity;
+    
     try{
         trackService.updateTrack(track);
         responseEntity=new ResponseEntity("Successfully updated", HttpStatus.CREATED);
@@ -71,7 +72,7 @@ public ResponseEntity<?> updateTrack(@RequestBody Track track)
 @GetMapping("trackapi")
 public ResponseEntity<?> sendGet() throws Exception
 {
-    ResponseEntity responseEntity;
+   
     List<Track> tracks;
     try{
         trackService.getUrlData();
@@ -88,7 +89,7 @@ public ResponseEntity<?> sendGet() throws Exception
 @DeleteMapping(value="/track/{id}")
     public ResponseEntity<?> deleteTrack(@PathVariable("id") int id)
 {
-        ResponseEntity responseEntity;
+      
         try {
             trackService.deleteTrack(id);
             responseEntity = new ResponseEntity("Successfully deleted", HttpStatus.CREATED);
